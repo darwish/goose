@@ -2,7 +2,6 @@ package goose
 
 import (
 	"database/sql"
-	"fmt"
 )
 
 // OpenDBWithDriver creates a connection a database, and modifies goose
@@ -21,10 +20,5 @@ func OpenDBWithDriver(driver string, dbstring string) (*sql.DB, error) {
 		driver = "mysql"
 	}
 
-	switch driver {
-	case "postgres", "sqlite3", "mysql", "sqlserver":
-		return sql.Open(driver, dbstring)
-	default:
-		return nil, fmt.Errorf("unsupported driver %s", driver)
-	}
+	return sql.Open(driver, dbstring)
 }

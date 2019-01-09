@@ -33,7 +33,7 @@ func Status(db *sql.DB, dir string) error {
 }
 
 func printMigrationStatus(db *sql.DB, version int64, script string) error {
-	q := GetDialect().migrationSQL()
+	q := GetDialect().MigrationSQL()
 
 	var row MigrationRecord
 
